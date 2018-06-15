@@ -12,7 +12,7 @@ class HomeController < ApplicationController
 
   def show_author
     begin
-      @user = User.find_by_id(params[:id])
+      @user = User.friendly.find(params[:id])
       @posts_user = @user.posts.published.order_post.paginate(page:params[:page],per_page:5)
     rescue
       redirect_to "/", notice: "Usuario no encontrado"
