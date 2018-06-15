@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       end
   end
 
-  get 'author/:id' => 'home#show_author', as: :author
+  get 'author/:id', to: 'home#show_author', as: 'author'
 
   authenticated :user do
     resources :courses
