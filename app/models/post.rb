@@ -4,6 +4,8 @@ class Post < ApplicationRecord
   belongs_to :course
   belongs_to :major
 
+  extend FriendlyId
+  friendly_id :title, use: :slugged
   validates_presence_of :title
   validates_presence_of :body
   enum status: { unpublished: 0, published: 1 }
