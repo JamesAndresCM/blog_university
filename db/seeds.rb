@@ -22,7 +22,7 @@ University.create!([{
 
 User.create!([{
                email: 'admin@domain.com',
-               username: 'admin',
+               username: 'Admin_site',
                password: 'admin123',
                password_confirmation: 'admin123',
                university_id: 1
