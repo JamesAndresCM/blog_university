@@ -2,6 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   #callback para que se inserte el id del user al crearse en la tabla role
+  extend FriendlyId
+  friendly_id :username, use: :slugged
   before_create :set_default_role
   mount_uploader :avatar, AvatarUploader
   devise :database_authenticatable, :registerable,
