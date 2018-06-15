@@ -23,7 +23,6 @@
 //= require ckeditor/init
 //= require ckeditor/config
 //= require ckeditor/plugins/youtube/plugin
-//= require ckeditor/plugins/codesnippet/plugin
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
