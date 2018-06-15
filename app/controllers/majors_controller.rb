@@ -25,13 +25,15 @@ class MajorsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to university_major_path } if @review.destroy_all
     end
-    #render json: JSON.pretty_generate(JSON.parse(@review.to_json))
+    # render json: JSON.pretty_generate(JSON.parse(@review.to_json))
   end
 
   private
 
   def set_mayor
     @major = Major.find(params[:id])
+  rescue StandardError
+    redirect_to universities_path, notice: 'Asignatura no encontrada'
   end
 
   def set_university
@@ -52,5 +54,7 @@ class MajorsController < ApplicationController
                         .majors
                         .find(params[:id])
                         .courses
+  rescue StandardError
+    redirect_to universities_path, notice: 'Universidad no encontrada'
   end
 end

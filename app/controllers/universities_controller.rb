@@ -43,6 +43,8 @@ class UniversitiesController < ApplicationController
 
   def set_university
     @university = University.find(params[:id])
+  rescue StandardError
+    redirect_to universities_path, notice: 'Universidad no encontrada'
   end
 
   def university_params
