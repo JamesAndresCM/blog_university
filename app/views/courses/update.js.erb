@@ -1,0 +1,7 @@
+<% if @course.errors.empty? %>
+$('#del_course_<%= @course.id %>').replaceWith(' <%= j render "course", course: @course %>');
+$('.alert-success').html("<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Success</strong> Course modificado con exito").show();
+$('#course-modal').modal('hide');
+<% else %>
+alert('<%= @course.errors.full_messages[0] %>');
+<% end %>

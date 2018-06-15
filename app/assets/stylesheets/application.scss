@@ -12,7 +12,10 @@
  *
  */
 @import "bootstrap";
-
+@import "font-awesome";
+@import "owl.carousel";
+@import "owl.theme.green";
+@import "pagination";
 
 .img-class{
   width: 520px;
@@ -81,20 +84,21 @@ ul {
 }
 
 .previous_page{
-  margin: auto;
+  margin: 0 auto;
 }
 
 .next_page{
-  margin: auto;
+  margin: 0 auto;
 }
 
+/*
 a[rel=prev] {
   padding: 0px 10px;
 }
 
 a[rel=next] {
   padding: 0px 10px;
-}
+}*/
 
 .div-center{
   margin: auto;
@@ -113,13 +117,13 @@ a[rel=next] {
 }
 
 .img_nav{
-  width: 65px;
-  height: 50px;
+  width: 50px;
+  height: 40px;
 }
 
 .img_nav_profile{
-  width: 55px;
-  height: 50px;
+  width: 40px;
+  height: 35px;
   border-radius: 50%;
 }
 
@@ -155,7 +159,7 @@ a[rel=next] {
 
 
 .main-background{
-  background-image: url('/assets/fractal.jpg');
+  //background-image: url('/assets/fractal.jpg');
   background-size : cover;
 }
 
@@ -174,12 +178,11 @@ a[rel=next] {
   margin: 5px;
 }
 
+/*
 ::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
 }
-
-
 
 ::-webkit-scrollbar-track {
   background: #f5f5f5;
@@ -194,7 +197,7 @@ a[rel=next] {
 ::-webkit-scrollbar-thumb:hover {
   background: #999;
 }
-
+*/
 .btn-delete-post{
   text-align: right;
   padding: 8px;
@@ -227,3 +230,77 @@ a[rel=next] {
   text-decoration:none;
 }
 
+.modal-style{
+  background-color: #F2F2F2; 
+  border-radius: 10px;padding: 25px 35px 20px 20px;
+}
+
+.card-padding{
+  padding: 10px 10px 10px 10px;
+  width: 286px;
+  height: 234px;
+}
+
+.border-div-shadow{
+  text-align: center; border: 1px solid #d6d6d6;
+  box-shadow: 3px 3px 0px #bababa;
+  border-radius: 3px;
+}
+
+.border-item{
+  background-color: #2E2F30;
+  border-radius: 5px;
+}
+
+.border-imagen-item{
+  height: 60px;
+  padding-top: 10px
+}
+
+.title-item{
+  width: 100%;
+  color: #fff;
+}
+
+.shadow-style{
+  filter: drop-shadow(20px 10px 4px #666666);
+}
+
+.nav-shadow{
+  box-shadow: 3px 3px 10px #bababa;
+}
+
+.username-span{
+  color: darkgray;
+  font-size: 16px;
+}
+
+.dropdown-margin{
+  min-width: 0px !important;
+}
+
+.size-img{
+  width: 720px;
+  height: 400px;
+}
+
+.img-class-style{
+  width: 410px;
+  height: 280px;
+  padding: 5px 5px 5px;
+  border-radius: 8px;
+}
+
+.carousel-style{
+  background-color: #2E2F30; text-align: center; border-radius: 10px;
+}
+
+.black-title{
+  color: #111;
+}
+
+.notice-style{
+  background-color: lightgreen;
+  color: white;
+  border-radius: 5px;
+}

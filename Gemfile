@@ -42,6 +42,12 @@ gem 'best_in_place'
 gem 'cancancan'
 gem 'rails_admin', '~> 1.2'
 gem 'will_paginate'
+gem 'cocoon'
+gem 'font-awesome-rails', '~> 4.3'
+gem 'owlcarousel-rails'
+gem 'rename'
+gem 'ckeditor'
+gem 'mini_magick'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

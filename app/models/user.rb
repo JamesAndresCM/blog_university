@@ -15,6 +15,11 @@ class User < ApplicationRecord
   #un usuario puede tener un solo rol
   has_one :role, dependent: :destroy
 
+  has_many :posts
+
+  belongs_to :university, optional: true
+  #add_reference :users, :universities, foreign_key: true, on_delete: :cascade
+
  #se inserta el id del usuario al ser este creado
   private
   def set_default_role

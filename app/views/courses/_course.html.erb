@@ -1,0 +1,11 @@
+<ul class="list-group ml-3 mb-3 shadow-style">
+  <li class="list-group-item" id="del_course_<%= course.id %>">
+    <%= course.name.capitalize %>
+    <% if current_user.role.superadmin_role? %>
+      <hr>
+      <%= link_to fa_icon("pencil-square-o") ,edit_course_path(course.id), remote: true %>
+      <%= link_to fa_icon("trash") ,course, remote: true, method: :delete, style: 'color: red', data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </li>
+</ul>
+

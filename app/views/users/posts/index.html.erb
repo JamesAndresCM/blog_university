@@ -1,0 +1,17 @@
+<div class="center">
+  <br>
+  <h2>Mis publicaciones</h2>
+  <%= link_to new_users_post_path, class: 'btn btn-sm btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    Nueva Publicacion
+  <% end %>
+</div>
+<div class="row" id="posts">
+  <%= render @posts %>
+</div>
+
+<div class="flickr_pagination">
+  <% unless @posts.empty? or @posts.nil? %>
+    <%= will_paginate @posts %>
+  <% end %>
+</div>

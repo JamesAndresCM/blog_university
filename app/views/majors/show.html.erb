@@ -1,0 +1,29 @@
+<div class="container col-sm-10" style="text-align: center;">
+  <%= create_course_major %>
+  <hr>
+  <%= link_to 'Back to Universities', universities_path, class: 'btn btn-sm btn-primary mt-2' %>
+  <br>
+  <br>
+  <div class="alert alert-success" role="alert" style="display: none;"></div>
+<div class="container card shadow-style" style="width: 30rem; text-align: center">
+  <div class="card-body">
+    <h5 class="card-header"><%= @university.name.upcase %></h5>
+    <br>
+    <p class="card-text"><%= @major.nombre.capitalize%></p>
+  </div>
+  <hr>
+    <div id="majors">
+      <h5>Asignaturas</h5>
+      <hr>
+      <% @majors.each do |major| %>
+        <ul class="list-group ml-1 mb-1">
+          <li class="list-group-item" >
+            <%= major.name %>
+            <%= remove_course_major(major.id)%>
+          </li>
+        </ul>
+      <%end%>
+    </div>
+</div>
+</div>
+

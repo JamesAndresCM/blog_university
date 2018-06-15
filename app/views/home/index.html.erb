@@ -1,5 +1,28 @@
-<h1>Home</h1>
-<% if current_user.nil? %>
-  <%= link_to "Register",new_user_registration_path %>
-  <%= link_to "Login", new_user_session_path %>
-<%end%>
+<% unless current_user && current_user.role.supervisor_role? %>
+<div class="container col-sm-10">
+  <div class="container col-sm-10 owl-carousel owl-theme owl-loaded mt-5 carousel-style">
+    <% @last_posts.each do |last| %>
+    <div class="item container">
+      <div class="item">
+        <a href="<%= users_post_path(last) %>"><img class="img img-fluid size-img" src="<%= last.post_image %>"></a>
+      </div>
+      <div class="item border-imagen-item">
+        <a href="<%= users_post_path(last) %>" style="color: white; text-decoration: none;"><%= last.title.capitalize %></a>
+      </div>
+    </div>
+    <%end%>
+  </div>
+  <% else %>
+  <h2 class="center mt-4">Revisar publicaciones</h2>
+  <% end %>
+  <div class="container col-sm-12 mt-4" id="posts">
+      <%= render partial: "users/posts/post", collection: @posts %>
+  </div>
+</div>
+<div class="flickr_pagination">
+  <% unless @posts.empty? or @posts.nil? %>
+    <%= will_paginate @posts %>
+  <% end %>
+</div>
+
+

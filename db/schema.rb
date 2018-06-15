@@ -10,10 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180525231848) do
+ActiveRecord::Schema.define(version: 20180613175548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ckeditor_assets", force: :cascade do |t|
+    t.string "data_file_name", null: false
+    t.string "data_content_type"
+    t.integer "data_file_size"
+    t.string "type", limit: 30
+    t.integer "width"
+    t.integer "height"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type"], name: "index_ckeditor_assets_on_type"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "majors", force: :cascade do |t|
+    t.string "nombre"
+    t.bigint "university_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["university_id"], name: "index_majors_on_university_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "course_id"
+    t.bigint "major_id"
+    t.string "post_image"
+    t.integer "status", default: 0
+    t.index ["course_id"], name: "index_posts_on_course_id"
+    t.index ["major_id"], name: "index_posts_on_major_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "course_id"
+    t.integer "major_id"
+  end
 
   create_table "roles", force: :cascade do |t|
     t.boolean "superadmin_role"
@@ -23,6 +71,14 @@ ActiveRecord::Schema.define(version: 20180525231848) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_roles_on_user_id"
+  end
+
+  create_table "universities", force: :cascade do |t|
+    t.string "name"
+    t.string "descripcion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "image"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,9 +96,16 @@ ActiveRecord::Schema.define(version: 20180525231848) do
     t.datetime "updated_at", null: false
     t.string "username"
     t.string "avatar"
+    t.bigint "university_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["university_id"], name: "index_users_on_university_id"
   end
 
+  add_foreign_key "majors", "universities"
+  add_foreign_key "posts", "courses"
+  add_foreign_key "posts", "majors"
+  add_foreign_key "posts", "users"
   add_foreign_key "roles", "users"
+  add_foreign_key "users", "universities"
 end

@@ -1,0 +1,10 @@
+<div class="container col-sm-10" style="text-align: center;">
+  <h2>Courses/Asignaturas</h2>
+  <%= create_course %>
+  <hr>
+  <div class="alert alert-success" role="alert" style="display: none;"></div>
+  <div class="alert alert-danger" role="alert" style="display: none;"></div>
+  <div class="row" id="courses">
+    <%= render @courses %>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<% if @university.errors.empty? %>
+  $('#del_university_<%= @university.id %>').replaceWith(' <%= j render "university", university: @university %>');
+  $('.alert-success').html("<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Success</strong> Universidad modificada con exito").show();
+  $('#university-modal').modal('hide');
+<% else %>
+  alert('<%= @university.errors.full_messages[0] %>');
+<% end %>

@@ -1,0 +1,6 @@
+<h4 class="center mt-4">Autor <%= @user.username.capitalize %></h4>
+<h6 class="center mt-1"><%= @user.posts.published.count %> Publicaciones</h6>
+
+<div class="container col-sm-12 mt-4" id="posts">
+  <%= render partial: "users/posts/post", collection: @posts_user %>
+</div>

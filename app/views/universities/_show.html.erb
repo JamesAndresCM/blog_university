@@ -1,0 +1,44 @@
+<div id="university-show" class="modal fade">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="container text-right">
+        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">Close</span>
+        </button>
+        </div>
+        <div class="container-col-md-12 modal-style">
+          <div class="card mb-4 ml-3">
+            <div class="card-body">
+              <h4 class="modal-title center">
+                <%= @university.name.upcase %>
+                </h4>
+              <hr>
+                <div class="container col-sm-12">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <%= image_tag @university.image, class: 'img-thumbnail card-img-top card-padding', alt: 'Card image cap' %>
+                      </div>
+                    <div class="col-md-6">
+                      <p>
+                        <%= @university.descripcion.capitalize %>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <hr>
+              <% unless @carreras.empty? %>
+                <h5>Carreras</h5>
+                  <% @carreras.map do |f| %>
+                  <ul class="list-group">
+                    <li class="list-group-item">
+                      <%= f.nombre.capitalize %>
+                    </li>
+                  </ul>
+                  <% end %>
+                <% end %>
+            </div>   
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div id="major-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title right"><%= title %></h4>
+        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">Close</span>
+        </button>
+      </div>
+      <div class="container-col-md-5 modal-style mt-3 ml-3 mr-3 mb-3">
+      <%= form_for [@university,@major] ,html: { class:"webkit-center", role: "form" } do |f| %>
+
+        <div class="form-group">
+          <%= f.label :seleccione_asignatura %>
+          <%= f.select :course_ids, @courses.collect{ |u| [u.name, u.id]},{}, {class: 'form-control'}  %>
+        </div>
+
+        <div class="form-group webkit-center">
+          <div class="actions col-md-4">
+            <%= f.submit class: "btn btn-sm btn-success" %>
+          </div>
+        </div>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>

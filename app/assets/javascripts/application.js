@@ -15,12 +15,18 @@
 //= require jquery-ui
 //= require rails-ujs
 //= require popper
+//= require cocoon
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require turbolinks
+//= require owl.carousel
+//= require ckeditor/init
+//= require ckeditor/config
+//= require ckeditor/plugins/youtube/plugin
+//= require ckeditor/plugins/codesnippet/plugin
 //= require_tree .
 
-$(document).ready(function(){
+$(document).on('turbolinks:load', function() {
 
     //Check to see if the window is top if not then display button
     $(window).scroll(function(){
@@ -39,4 +45,13 @@ $(document).ready(function(){
 
 });
 
-
+$(document).on('turbolinks:load', function() {
+    Turbolinks.clearCache();
+    $('.owl-carousel').owlCarousel({
+        loop:true,
+        items:1,
+        margin:10,
+        autoplay: true,
+        dots: true
+    });
+});

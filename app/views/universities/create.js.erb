@@ -1,0 +1,7 @@
+<% if @university.errors.empty? %>
+	$("#universities").prepend("<%= j render @university %>")
+	$('.alert-success').html("<a href='#' class='close' data-dismiss='alert' aria-label='close'>&times;</a><strong>Success</strong> Universidad creada con exito").show();
+	$('#university-modal').modal('hide');
+<% else %>
+  alert('<%= @university.errors.full_messages[0] %>');
+<% end %>

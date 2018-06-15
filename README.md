@@ -1,14 +1,20 @@
-# Base para Rails 5
+# Blog University
 
 # TL;DR
-Autenticación, autorización, + scaffold personalizado con bootstrap
+Un user puede pertenecer a una universidad, una universidad posee Carreras , una Carrera posee Cursos o Asignaturas
+
+# Tipos de usuarios : 
+
+* Normal solo puede publicar
+
+* Supervisor Modera las publicaciones
+
+* Administrador Control total
 
 # Instalación
 Luego de clonar el proyecto :
 
 * bundle install
-
-* configurar usuario y base de dato en el archivo config/database.yml , luego iniciar servicio postgresql
 
 * rails db:create
 

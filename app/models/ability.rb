@@ -32,19 +32,30 @@ class Ability
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
     user ||= User.new # guest user (not logged in)
 
+
     #superadmin puede administrar todos los controllers, ademas tiene visibilidad para rails_admin definido en el partial _nav
-    if user.role.superadmin_role
+    if user.role.nil?
+        can :read, University
+        can :read, Major
+        can :show, Post
+    elsif user.role.superadmin_role
         can :manage, :all
         can :access, :rails_admin       # only allow admin users to access Rails Admin
         can :dashboard                  # allow access to dashboard
       #usuario supervisor, puede ejecutar tareas administrativas en los controlladores
     elsif user.role.supervisor_role?
-        #can :manage, Post
+        can :read , University
+        can :post_status, Post
+        can :manage, Post
+        can :read , Major
         #can :manage, Comment
       #usuario normal puede ejecutar las acciones del crud solo para el
     elsif user.role.user_role?
-        #can :crud, Post , user_id: user.id
+        can :crud, Post , user_id: user.id
+        can :show, Post.published
         #can :crud, Comment, user_id: user.id
+        can :read, University
+        can :read, Major
         can :crud, User, user_id: user.id
     end
   end

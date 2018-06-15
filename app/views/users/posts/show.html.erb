@@ -1,0 +1,25 @@
+<div class="container col-sm-10 mt-5">
+  <h2><%= @post.title %></h2>
+  <span>Autor <a class="text-muted" href="<%= author_path(@post.user_id) %>"><%= @post.user.username %></a>&ensp;</span><%= @post.created_at.strftime("%d de %b, %Y ") %>
+  <p class="center justify text-muted mb-2"><%= @post.user.university.name.capitalize %></p>
+  <p class="center justify text-muted mb-2">Carrera <%= @post.major.nombre.capitalize %></p>
+  <p class="center justify text-muted"> Curso <%= @post.course.name.capitalize %></p>
+  <p class="center justify mt-4"><%= @post.body.html_safe %></p>
+</div>
+<% if @post.published? %>
+<div class="container col-sm-10" id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+      this.page.url = '<%= request.original_url %>';  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = '<%= @post.id %>'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+
+    (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://blog-university.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<% end %>
