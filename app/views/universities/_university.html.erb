@@ -17,7 +17,7 @@
                 <li class="list-group-item">
                   <%= u[0] %>
                   <hr>
-                    <%= link_to 'Ver mas detalles', university_major_path(university.id, u[1])  , class: "btn btn-sm btn-secondary mt-2" %>
+                    <%= link_to 'Ver mas detalles', university_major_path(university.slug, u[1])  , class: "btn btn-sm btn-secondary mt-2" %>
                 </li>
               </ul>
             <% end %>

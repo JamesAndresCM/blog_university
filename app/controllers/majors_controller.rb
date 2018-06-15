@@ -37,12 +37,12 @@ class MajorsController < ApplicationController
   end
 
   def set_university
-    @university = University.find(params[:university_id])
+    @university = University.friendly.find(params[:university_id])
   end
 
   # retorna los ids de los cursos que no estan asociados a carrera
   def fetch_courses
-    @courses = Course.all.where.not(id: University.find(params[:university_id])
+    @courses = Course.all.where.not(id: University.friendly.find(params[:university_id])
                                                   .majors
                                                   .find(params[:id])
                                                   .courses.ids)
@@ -50,11 +50,9 @@ class MajorsController < ApplicationController
 
   # retorna cursos asignados a una carrera
   def fetch_majors
-    @majors = University.find(params[:university_id])
+    @majors = University.friendly.find(params[:university_id])
                         .majors
                         .find(params[:id])
                         .courses
-  rescue StandardError
-    redirect_to universities_path, notice: 'Universidad no encontrada'
   end
 end

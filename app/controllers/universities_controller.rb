@@ -42,7 +42,7 @@ class UniversitiesController < ApplicationController
   private
 
   def set_university
-    @university = University.find(params[:id])
+    @university = University.friendly.find(params[:id])
   rescue StandardError
     redirect_to universities_path, notice: 'Universidad no encontrada'
   end
