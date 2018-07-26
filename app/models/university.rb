@@ -10,6 +10,6 @@ class University < ApplicationRecord
   friendly_id :name, use: :slugged
   mount_uploader :image, ImageUploader
   accepts_nested_attributes_for :majors, allow_destroy: true, reject_if: ->(attrs) { attrs['nombre'].blank? }
-  scope :majors_university, ->(id) { friendly.find(id).majors }
-  scope :university_order, -> { all.order('created_at DESC') }
+  scope :majors_university, ->(id) { friendly.joins(:majors => :courses).where(id: id) }
+  scope :university_order, -> { all.order(created_at: :desc) }
 end
