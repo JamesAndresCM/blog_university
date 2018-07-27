@@ -1,9 +1,9 @@
 <div class="container col-sm-10 mt-5">
   <h2><%= @post.title %></h2>
   <span>Autor <a class="text-muted" href="<%= author_path(@post.user.slug) %>"><%= @post.user.username %></a>&ensp;</span><%= @post.created_at.strftime("%d de %b, %Y ") %>
-  <p class="center justify text-muted mb-2"><%= @post.user.university.name.capitalize %></p>
-  <p class="center justify text-muted mb-2">Carrera <%= @post.major.nombre.capitalize %></p>
-  <p class="center justify text-muted"> Curso <%= @post.course.name.capitalize %></p>
+  <p class="center justify text-muted mb-2"><%= @post.name.capitalize %></p>
+  <p class="center justify text-muted mb-2">Carrera <%= @post.nombre.capitalize %></p>
+  <p class="center justify text-muted"> Curso <%= @post.c_name.capitalize %></p>
   <p class="center justify mt-4"><%= @post.body.html_safe %></p>
 </div>
 <% if @post.published? %>

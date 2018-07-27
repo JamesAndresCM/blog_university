@@ -16,9 +16,10 @@ class Post < ApplicationRecord
   scope :total_unpublished, -> { unpublished.where(created_at: 1.day.ago..Time.now) }
 
   def self.relationships_posts
-    joins(major: :university)
-      .select('universities.name, posts.id, posts.user_id, posts.title,
+    joins(:course).joins(major: :university)
+                  .select('universities.name, posts.id, posts.user_id, posts.title,
                 posts.post_image, posts.created_at, posts.slug, posts.body,
-                posts.status')
+                posts.status,posts.major_id,posts.course_id,majors.nombre,
+                courses.name as c_name')
   end
 end

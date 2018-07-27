@@ -12,7 +12,7 @@ class HomeController < ApplicationController
 
   def show_author
     @user = User.friendly.find(params[:id])
-    @posts_user = @user.posts.published.order_post.paginate(page: params[:page], per_page: 5)
+    @posts_user = @user.posts.published.order_post.paginate(page: params[:page], per_page: 5).relationships_posts
   rescue StandardError
     redirect_to root_path, notice: 'Usuario no encontrado'
   end

@@ -79,7 +79,7 @@ module Users
     private
 
     def set_post
-      @post = Post.friendly.find(params[:id])
+      @post = Post.friendly.relationships_posts.find(params[:id])
     end
 
     def post_params
