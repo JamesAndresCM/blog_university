@@ -10,8 +10,15 @@ class Post < ApplicationRecord
   validates_presence_of :body
   enum status: { unpublished: 0, published: 1 }
   mount_uploader :post_image, PostImageUploader
-  scope :order_post, -> { order('created_at DESC')}
-  scope :order_post_status, -> { order('status ASC')}
+  scope :order_post, -> { order('created_at DESC') }
+  scope :order_post_status, -> { order('status ASC') }
   scope :post_for_user, ->(user) { where(user_id: user.id) }
   scope :total_unpublished, -> { unpublished.where(created_at: 1.day.ago..Time.now) }
+
+  def self.relationships_posts
+    joins(major: :university)
+      .select('universities.name, posts.id, posts.user_id, posts.title,
+                posts.post_image, posts.created_at, posts.slug, posts.body,
+                posts.status')
+  end
 end

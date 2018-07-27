@@ -11,7 +11,7 @@
         <div class="col-md-6 px-3">
           <div class="card-block px-3">
             <p><%= post.created_at.strftime("%d de %b, %Y ") %></p>
-            <p class="card-text">Universidad <%= post.major.university.name.capitalize.html_safe %></p>
+            <p class="card-text">Universidad <%= post.name.html_safe %></p>
 	    <p class="card-text" style="text-align: justify"><%= sanitize post.body[0..240].capitalize, tags: %w(strong em a p b), attributes: %w(href) %>.[…]</p>
             <footer class="text-muted">
               <a class="text-muted" href="<%= users_post_path(post) %>">Continuar leyendo...</a></footer>

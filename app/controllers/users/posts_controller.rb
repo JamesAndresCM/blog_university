@@ -9,7 +9,7 @@ module Users
     # GET /posts
     # GET /posts.json
     def index
-      @posts = Post.post_for_user(current_user).order_post.paginate(page:params[:page],per_page:10)
+      @posts = Post.post_for_user(current_user).order_post.paginate(page:params[:page],per_page:10).relationships_posts
     end
 
     # GET /posts/1
