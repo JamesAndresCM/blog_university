@@ -6,10 +6,11 @@
       <%= image_tag university.image, class: 'card-img-top card-padding img-thumbnail', alt: 'Card image cap' %>
       <div class="card-body">
           <p><%= university.descripcion[0..30].capitalize%>...</p>
-
+        <% unless university.majors.to_a.empty? %>
           <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#collapseMajor_<%= university.id %>" aria-expanded="false" aria-controls="collapseMajor">
             Mostrar Carreras
           </button>
+        <%end%>
           <hr>
           <div class="collapse" id="collapseMajor_<%= university.id %>">
             <% university.majors.each do |x| %>
@@ -22,7 +23,6 @@
               </ul>
             <%end%>
           </div>
-
             <%= link_to 'Ver Universidad', university , class: "btn btn-sm btn-info mt-2", remote: true, "data-toggle" => "modal-university", "data-target" => "my-modal" %>
             <%= admin_university_actions(university) %>
       </div>

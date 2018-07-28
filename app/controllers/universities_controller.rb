@@ -4,7 +4,7 @@ class UniversitiesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @universities = University.includes(:majors).joins(:majors).university_order.uniq
+    @universities = University.includes(:majors).left_outer_joins(:majors).university_order.uniq
   end
 
   def edit; end
