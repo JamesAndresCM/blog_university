@@ -1,14 +1,15 @@
 # controller para guardar review
 class MajorsController < ApplicationController
-  before_action :set_mayor, only: %i[edit show update destroy]
+  before_action :set_mayor, only: %i[edit update]
   before_action :fetch_courses, only: %i[edit]
-  before_action :fetch_majors, only: %i[show update]
-  before_action :set_university, only: %i[edit show]
+  before_action :set_university, only: %i[edit]
   load_and_authorize_resource
 
   def edit; end
 
-  def show; end
+  def show
+    @university = University.university_courses(params[:id])
+  end
 
   def update
     @course = Course.find(params[:major]['course_ids'])
@@ -19,11 +20,9 @@ class MajorsController < ApplicationController
   end
 
   def destroy
-    @course = Course.find(params[:major_id])
-    @review = Review.where(course_id: @course, major_id: @major)
-
+    @review = Review.course_major(params[:university_id], params[:id])
     respond_to do |format|
-      format.html { redirect_to university_major_path } if @review.destroy_all
+      format.js { render body: nil} if @review.destroy_all
     end
     # render json: JSON.pretty_generate(JSON.parse(@review.to_json))
   end
@@ -48,11 +47,4 @@ class MajorsController < ApplicationController
                                                   .courses.ids)
   end
 
-  # retorna cursos asignados a una carrera
-  def fetch_majors
-    @majors = University.friendly.find(params[:university_id])
-                        .majors
-                        .find(params[:id])
-                        .courses
-  end
 end

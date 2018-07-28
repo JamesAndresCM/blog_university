@@ -9,14 +9,11 @@ module MajorsHelper
     end
   end
 
-  def remove_course_major(major_id)
+  def remove_course_major(major_id, course_id)
     if current_user && current_user.role.superadmin_role?
-      '<hr>'.html_safe + (button_to 'Remove Asignatura',
-                                      [@university, @major , major_id: major_id],
-                                    class: 'btn btn-sm btn-danger mt-2',
-                                    remote: true,
-                                    method: :delete,
-                                    data: { confirm: 'Are you sure?' })
+      (link_to 'Remove Course',
+               "javascript:RemoveMajor(#{major_id},#{course_id})",
+               class: 'btn-sm btn-danger btn')
     end
   end
 end
