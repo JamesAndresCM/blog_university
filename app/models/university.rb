@@ -19,4 +19,11 @@ class University < ApplicationRecord
       .select('universities.id as u_id,universities.name as u_name, majors.nombre, majors.id as id_mayor,
                 courses.name as c_name, courses.id as id_course')
   end
+
+  scope :courses_majors, ->(u_id, id) { friendly.find(u_id).majors.find(id).courses }
+
+  def self.course_ids(un_id, id)
+    joins(majors: :courses).where(slug: un_id, 'majors.id' => id)
+                           .select('courses.id')
+  end
 end

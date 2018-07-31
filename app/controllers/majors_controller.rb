@@ -23,7 +23,7 @@ class MajorsController < ApplicationController
   def destroy
     @review = Review.course_major(params[:university_id], params[:id])
     respond_to do |format|
-      format.js { render body: nil} if @review.destroy_all
+      format.js { render body: nil } if @review.destroy_all
     end
     # render json: JSON.pretty_generate(JSON.parse(@review.to_json))
   end
@@ -42,18 +42,15 @@ class MajorsController < ApplicationController
 
   # retorna los ids de los cursos que no estan asociados a carrera
   def fetch_courses
-    @courses = Course.all.where.not(id: University.friendly.find(params[:university_id])
-                                                  .majors
-                                                  .find(params[:id])
-                                                  .courses.ids)
+    @courses = Course.where.not(id: University.course_ids(
+      params[:university_id],
+      params[:id]
+    ))
   end
 
   def fetch_majors
-    @majors = University.find(params[:university_id])
-                  .majors
-                  .find(params[:id])
-                  .courses
+    @majors = University.courses_majors(params[:university_id], params[:id])
   rescue StandardError
-    redirect_to universities_path, notice: 'Universidad no encontrada'
+    redirect_to universities_path, notice: 'Carrera no encontrada'
   end
 end
