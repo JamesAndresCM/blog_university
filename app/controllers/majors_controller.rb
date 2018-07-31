@@ -3,6 +3,7 @@ class MajorsController < ApplicationController
   before_action :set_mayor, only: %i[edit update]
   before_action :fetch_courses, only: %i[edit]
   before_action :set_university, only: %i[edit]
+  before_action :fetch_majors, only: %i[show update]
   load_and_authorize_resource
 
   def edit; end
@@ -47,4 +48,12 @@ class MajorsController < ApplicationController
                                                   .courses.ids)
   end
 
+  def fetch_majors
+    @majors = University.find(params[:university_id])
+                  .majors
+                  .find(params[:id])
+                  .courses
+  rescue StandardError
+    redirect_to universities_path, notice: 'Universidad no encontrada'
+  end
 end
