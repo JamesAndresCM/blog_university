@@ -1,7 +1,7 @@
 ## Blog University
 
 ### Demo
-https://sistema-medico.herokuapp.com/
+https://bloguniversity.herokuapp.com/
 
 ### Descripción 
 - Sistema de blogging el cual permite publicaciones de un alumno para una asignatura de una carrera.
