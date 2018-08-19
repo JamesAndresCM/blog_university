@@ -1,31 +1,41 @@
-# Blog University
+## Blog University
 
-# TL;DR
-Un user puede pertenecer a una universidad, una universidad posee Carreras , una Carrera posee Cursos o Asignaturas
+### Demo
+https://bloguniversity.herokuapp.com/
 
-# Tipos de usuarios : 
+### Descripción 
+- Sistema de blogging el cual permite publicaciones de un alumno para una asignatura de una carrera.
 
-* Normal solo puede publicar
+### Características
+- Sistema de roles para usuarios
+- Sistema de comentarios utilizando disqus
+- Sistema de publicación utilizando ckeditor
+- Un usuario normal solo puede publicar
+- El usuario supervisor es quien aprueba las publicaciones
 
-* Supervisor Modera las publicaciones
+### Adicional
+- Para utilizar los comentarios se debe crear el servicio en https://disqus.com/admin/create/ luego configurar el servicio de disqus (url) en el archivo `app/views/users/posts/show.html.erb`
 
-* Administrador Control total
+### Usuarios por defecto
+- admin@domain.com , contraseña : admin123
+- supervisor@domain.com , contraseña : supervisor123
+- user@domain.com, contraseña : user123
 
-# Instalación
-Luego de clonar el proyecto :
+### Instalación
+```bash
+bundle install
+rails db:create
+rails db:migrate
+rails db:seed
+rails server
+```
+### Imágenes
 
-* bundle install
-
-* rails db:create
-
-* rails db:migrate
-
-* rails db:seed
-
-* rails server
-
-3 tipos de usuarios, admin, supervisor y usuario normal.
-
-* admin@domain.com , contraseña : admin123
-* supervisor@domain.com , contraseña : supervisor123
-* user@domain.com, contraseña : user123
+<img src="https://i.imgur.com/KX9InQI.png" />
+<br>
+<img src="https://i.imgur.com/oigERSx.png" />
+<br>
+<img src="https://i.imgur.com/v6GyKGE.png" />
+<br>
+<img src="https://i.imgur.com/EGJ4HCX.png" />
+<br>
