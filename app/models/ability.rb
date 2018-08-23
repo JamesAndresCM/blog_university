@@ -56,7 +56,7 @@ class Ability
         #can :crud, Comment, user_id: user.id
         can :read, University
         can :read, Major
-        can :crud, User, user_id: user.id
+        can :crud, User, id: user.id
     end
   end
 end
