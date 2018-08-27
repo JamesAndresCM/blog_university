@@ -34,6 +34,11 @@
             <%= f.label :password_confirmation %><br />
             <%= f.password_field :password_confirmation, autocomplete: "off", class:'form-control input-lg' %>
           </div>
+        
+          <div class="form-group">
+              <%= f.label :seleccione_university %>
+                <%= f.select :university_id, University.all.collect{ |u| [u.name, u.id]},{}, {class: 'form-control'}  %>
+          </div>
 
           <div class="actions center">
             <%= f.submit "Sign up" ,class:'btn btn-primary' %>
