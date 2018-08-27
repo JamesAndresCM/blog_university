@@ -6,6 +6,10 @@
       <%= image_tag university.image, class: 'card-img-top card-padding img-thumbnail', alt: 'Card image cap' %>
       <div class="card-body">
           <p><%= university.descripcion[0..30].capitalize%>...</p>
+        <% unless university.majors.joins(:posts).empty? %>
+        <%= link_to "Ver Publicaciones", show_posts_university_path(university.id), class: 'btn-sm btn-secondary',style: 'text-decoration-line: none;' %>
+        <br><br>
+        <% end %>
         <% unless university.majors.to_a.empty? %>
           <button class="btn btn-sm btn-primary" type="button" data-toggle="collapse" data-target="#collapseMajor_<%= university.id %>" aria-expanded="false" aria-controls="collapseMajor">
             Mostrar Carreras
@@ -18,7 +22,7 @@
                 <li class="list-group-item">
                     <%= x.nombre %>
                   <hr>
-                  <%= link_to 'Ver mas detalles', university_major_path(university.slug, x.id)  , class: "btn btn-sm btn-secondary mt-2" %>
+                  <%= link_to 'Detalles & Posts', university_major_path(university.slug, x.id)  , class: "btn btn-sm btn-success mt-2" %>
                 </li>
               </ul>
             <%end%>
