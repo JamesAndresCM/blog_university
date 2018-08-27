@@ -1,0 +1,11 @@
+<legend style="text-align: center" class="mt-4">Publicaciones <%= @posts_university[0].name %></legend>
+<br>
+<%= link_to "Back to Universities", universities_path , class:'btn-sm btn-primary ml-4', style:'text-decoration-line: none'%>
+<div class="container col-sm-12 mt-3" id="posts">
+  <%= render partial: "users/posts/post", collection: @posts_university %>
+</div>
+<div class="flickr_pagination">
+  <% unless @posts_university.empty? or @posts_university.nil? %>
+    <%= will_paginate @posts_university %>
+  <% end %>
+</div>
