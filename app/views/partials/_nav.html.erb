@@ -8,11 +8,18 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-md-auto d-md-flex">
+        <%= form_tag(search_university_path, :method => "get", id: "search-form", class: 'mt-2') do %>
+          <%= text_field_tag :search, params[:search], data: {autocomplete_source: search_data_universities_path}, required: true,placeholder: "Search University", style: 'border-radius: 5px; width: 300px' %>
+          <%= submit_tag "Search",class: 'btn-sm btn-primary',id: 'btn-search' %>
+        <% end %>
         <li class="nav-item-active">
           <a class="nav-link" href="<%= universities_url %>">Universidades</a>
         </li>
         <% if user_signed_in? %>
           <%= usertype_helper%>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= author_profile_path(current_user.username) %>">Ver Perfil</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="<%= users_posts_path %>">Posts</a>
           </li>
