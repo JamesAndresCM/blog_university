@@ -4,3 +4,8 @@
 <div class="container col-sm-12 mt-4" id="posts">
   <%= render partial: "users/posts/post", collection: @posts_user %>
 </div>
+<div class="flickr_pagination">
+  <% unless @posts_user.empty? or @posts_user.nil? %>
+    <%= will_paginate @posts_user %>
+  <% end %>
+</div>

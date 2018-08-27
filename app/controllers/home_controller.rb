@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  # skip_before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:author_profile]
   def index
     @posts = Post.published.order_post.paginate(page: params[:page], per_page: 10).relationships_posts
     @last_posts = Post.published.order_post.limit(3)
@@ -16,4 +16,23 @@ class HomeController < ApplicationController
   rescue StandardError
     redirect_to root_path, notice: 'Usuario no encontrado'
   end
+
+  def author_profile
+    @user = current_user
+  end
+
+  def search_post_university
+      if params[:search]
+      respond_to do |format|
+        @posts = Post.university_posts(params[:search]).order_post.paginate(page: params[:page], per_page: 5)
+        unless @posts.empty?
+          format.html {  @posts  }
+          format.js {}
+        else
+            format.html{ redirect_to root_path, notice: "University #{params[:search]} not found"  }
+        end
+      end
+    end
+  end
+
 end

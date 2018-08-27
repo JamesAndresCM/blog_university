@@ -1,0 +1,18 @@
+<div class="card mt-4" style="width: 20rem; margin: 0 auto;">
+<div class="card-header">
+    Perfil Usuario <%= @user.username.capitalize %>
+  </div>
+  <%= image_tag(current_user.avatar.url, class:"img-fluid mt-2", style: "width: 150px; border-radius: 150px; margin: 0 auto;") %>
+  <div class="card-body">
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Email : <%= @user.email %></li>
+    <li class="list-group-item">Universidad : <%= @user.university.name %></li>
+    <li class="list-group-item">Posts : <%= @user.posts.count %></li>
+  </ul>
+  <% if @user.posts.count > 0 %>
+  <div class="card-body">
+    <a href="<%= author_path(current_user)%>" class="card-link">Ir a Publicaciones</a>
+  </div>
+  <% end %>
+</div>

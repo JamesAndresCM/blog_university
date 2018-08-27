@@ -28,5 +28,15 @@
       <%end%>
     </div>
 </div>
+<% unless @posts_major.empty? %>
+<div class="container col-sm-12 mt-4" id="posts">
+  <legend>Publicaciones Carrera <%= @university[0].nombre.capitalize%></legend>
+  <%= render partial: "users/posts/post", collection: @posts_major %>
 </div>
-
+</div>
+<% end %>
+<div class="flickr_pagination">
+  <% unless @posts_major.empty? or @posts_major.nil? %>
+    <%= will_paginate @posts_major %>
+  <% end %>
+</div>

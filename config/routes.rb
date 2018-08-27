@@ -11,6 +11,12 @@ Rails.application.routes.draw do
 
 
   resources :universities do
+    member do
+      get :show_posts
+    end
+    collection do
+      get :search_data
+    end
     resources :majors
   end
   namespace :users do
@@ -22,8 +28,10 @@ Rails.application.routes.draw do
   end
 
   get 'author/:id', to: 'home#show_author', as: 'author'
+  get 'search', to: 'home#search_post_university', as: 'search_university'
 
   authenticated :user do
+    get 'author_profile/:id', to: 'home#author_profile', as: 'author_profile'
     resources :courses
     mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
     mount Ckeditor::Engine => '/ckeditor'

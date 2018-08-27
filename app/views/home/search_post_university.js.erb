@@ -1,4 +1,4 @@
-$(document).ready(function() {  
+$(document).ready(function() {
   $('#posts').append('<%= j render partial: "users/posts/post", collection: @posts %>');
   $('.pagination').replaceWith('<%= escape_javascript will_paginate(@posts) %>');
 });
