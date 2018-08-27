@@ -10,6 +10,12 @@ class MajorsController < ApplicationController
 
   def show
     @university = University.university_courses(params[:id])
+    @posts_major = Post.major_university_posts(params[:university_id], params[:id]).paginate(page: params[:page], per_page: 5).order_post
+  end
+
+  def posts_per_major
+    @posts_major = Major.where(params[:university_id], params[:id]).joins(:posts)
+    render json: @posts_major
   end
 
   def update
