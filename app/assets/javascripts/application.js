@@ -11,15 +11,12 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
-//= require jquery-ui/autocomplete
-//= require best_in_place
-//= require jquery-ui
 //= require rails-ujs
+//= require jquery-ui/autocomplete
+//= require jquery-ui
 //= require popper
 //= require cocoon
 //= require bootstrap-sprockets
-//= require rails-ujs
 //= require turbolinks
 //= require owl.carousel
 //= require ckeditor/init

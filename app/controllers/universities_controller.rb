@@ -17,7 +17,11 @@ class UniversitiesController < ApplicationController
     @university = University.new(university_params)
 
     respond_to do |format|
-      format.js {} if @university.save
+      if @university.save
+        format.js {}
+      else
+        format.js { 'create' }
+      end
     end
   end
 
@@ -59,6 +63,8 @@ class UniversitiesController < ApplicationController
   def university_params
     params.require(:university).permit(:name,
                                        :descripcion,
+                                       :direccion,
+                                       :phone_number,
                                        :image,
                                        majors_attributes:
                                        %i[id nombre _destroy])

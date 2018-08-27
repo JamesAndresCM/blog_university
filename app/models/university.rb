@@ -3,9 +3,10 @@ class University < ApplicationRecord
   has_many :users, dependent: :nullify
   has_many :majors, dependent: :destroy
 
-  validates_presence_of :name
-  validates_presence_of :descripcion
-
+  validates :name, presence: true, format: {with: /\A[a-zA-Z ]{10,50}\z/, message: 'Solo letras entre 10 y 30 de largo'}
+  validates :descripcion,presence: true,  format: {with: /\A[0-9a-zA-Z ]{10,100}\z/, message: 'Solo numeros y letras entre 10 y 100 de largo'}
+  validates :direccion, presence: true,  format: {with: /\A[0-9a-zA-Z ]{10,100}\z/, message: 'Solo numeros y letras entre 10 y 100 de largo'}
+  validates :phone_number, presence: true, format: {with: /\A[0-9]\d{8}/, message: 'Solo 9 numeros'}
   extend FriendlyId
   friendly_id :name, use: :slugged
   mount_uploader :image, ImageUploader
