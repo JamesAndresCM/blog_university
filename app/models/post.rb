@@ -27,17 +27,17 @@ class Post < ApplicationRecord
 
   def self.university_posts(search)
     joins(:major => :university).where("universities.name ilike (?) and posts.status = (?)","%#{search}%" , 1)
-    .select(:"universities.name", :body, :id, :title, :slug, :user_id, :created_at)
+    .select(:"universities.name", :body, :id, :title, :slug, :user_id, :created_at,:status)
   end
   
   def self.post_per_university(post)
     joins(:major => :university).where("majors.university_id = (?) and posts.status = (?)", post, 1)
-    .select(:name,:slug, :title,:user_id, :created_at,:body)
+    .select(:name,:slug, :title,:user_id, :created_at,:body, :status)
   end
 
   def self.major_university_posts(university, major)
     joins(:major => :university).where("universities.slug = (?) and majors.id = (?) and posts.status = (?)" ,university, major, 1)
-    .select(:name, :slug, :title, :user_id, :created_at, :body)
+    .select(:name, :slug, :title, :user_id, :created_at, :body,:status)
   end
 
 end
