@@ -4,6 +4,12 @@
   <p class="center justify text-muted mb-2"><%= @post.name.capitalize %></p>
   <p class="center justify text-muted mb-2">Carrera <%= @post.nombre.capitalize %></p>
   <p class="center justify text-muted"> Curso <%= @post.c_name.capitalize %></p>
+  <%= image_tag(@post.post_image.url, class: 'img-fluid', style: 'width: 100px;
+    border-radius: 50px;
+    height: 100px') %>
+  <br><br>
+  <%= link_to 'Download Post image', @post.post_image.url, download: '' ,class:'btn-sm btn-primary', style:'text-decoration-line: none;
+    border-radius: 20px'%>
   <p class="center justify mt-4"><%= @post.body.html_safe %></p>
 </div>
 <% if @post.published? %>
