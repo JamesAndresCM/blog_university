@@ -38,6 +38,8 @@ class Ability
         can :read, University
         can :read, Major
         can :show, Post
+        can :show_posts, University
+        can :search_data, University
     elsif user.role.superadmin_role
         can :manage, :all
         can :access, :rails_admin       # only allow admin users to access Rails Admin
@@ -48,15 +50,17 @@ class Ability
         can :post_status, Post
         can :manage, Post
         can :read , Major
-        #can :manage, Comment
+        can :show_posts, University
+        can :search_data, University
       #usuario normal puede ejecutar las acciones del crud solo para el
     elsif user.role.user_role?
         can :crud, Post , user_id: user.id
         can :show, Post.published
-        #can :crud, Comment, user_id: user.id
         can :read, University
         can :read, Major
         can :crud, User, id: user.id
+        can :show_posts, University
+        can :search_data, University
     end
   end
 end
