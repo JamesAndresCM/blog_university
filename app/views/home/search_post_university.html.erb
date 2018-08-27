@@ -1,0 +1,9 @@
+<div class="container col-sm-12 mt-4" id="posts">
+  <%= render partial: "users/posts/post", collection: @posts %>
+</div>
+
+<div class="flickr_pagination">
+  <% unless @posts.empty? or @posts.nil? %>
+    <%= will_paginate @posts %>
+  <% end %>
+</div>
