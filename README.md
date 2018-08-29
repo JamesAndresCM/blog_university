@@ -12,6 +12,7 @@ https://bloguniversity.herokuapp.com/
 - Sistema de publicación utilizando ckeditor
 - Un usuario normal solo puede publicar
 - El usuario supervisor es quien aprueba las publicaciones
+- Sistema de búsqueda de universidad, mediante autocompletado
 
 ### Adicional
 - Para utilizar los comentarios se debe crear el servicio en https://disqus.com/admin/create/ luego configurar el servicio de disqus (url) en el archivo `app/views/users/posts/show.html.erb`
@@ -31,7 +32,7 @@ rails server
 ```
 ### Imágenes
 
-<img src="https://i.imgur.com/KX9InQI.png" />
+<img src="https://i.imgur.com/A1YSBkL.png" />
 <br>
 <img src="https://i.imgur.com/oigERSx.png" />
 <br>
