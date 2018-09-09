@@ -4,6 +4,7 @@ module Users
   class PostsController < ApplicationController
     before_action :check_university
     before_action :set_post, only: %i[show edit update destroy post_status]
+    before_action :set_major, only: %i[edit new create]
     load_and_authorize_resource
 
     # GET /posts
@@ -19,13 +20,10 @@ module Users
     # GET /posts/new
     def new
       @post = Post.new
-      @majors = Major.all.where(university_id: current_user.university_id)
     end
 
     # GET /posts/1/edit
-    def edit
-      @majors = Major.all.where(university_id: current_user.university_id)
-    end
+    def edit; end
 
     # POST /posts
     # POST /posts.json
@@ -87,6 +85,10 @@ module Users
                                    :post_image, :status)
     end
 
+    def set_major
+      @majors = Major.all.where(university_id: current_user.university_id) 
+    end
+  
     def check_university
       if current_user && current_user.university_id.nil?
         respond_to do |format|
