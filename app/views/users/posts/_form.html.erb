@@ -17,7 +17,7 @@
     <div class="col">
       <div class="form-group">
         <%= f.label :titulo_publicacion %><br />
-        <%= f.text_field :title, class:'form-control', required: true %>
+        <%= f.text_field :title, class:'form-control', required: true%>
       </div>
     </div>
     <div class="col">
@@ -32,11 +32,11 @@
   </div>
 
     <div class="form-group">
-      <%= f.select :major_id, @majors.collect{ |u| [u.nombre, u.id] },{prompt: "Seleccione Carrera"} , {class: 'form-control'}  %>
+      <%= f.select :major_id, @majors.collect{ |u| [u.nombre, u.id] },{prompt: "Seleccione Carrera"} , {class: 'form-control', required: true}  %>
     </div>
 
     <div class="form-group">
-      <%= f.collection_select :course_id, @post.major.try(:courses) || [], :id, :name, {prompt: "Seleccione Asignatura"} , {class: 'form-control'}  %>
+      <%= f.collection_select :course_id, @post.major.try(:courses) || [], :id, :name, {prompt: "Seleccione Asignatura"} , {class: 'form-control', required: true}  %>
     </div>
 
     <div class="form-group">
