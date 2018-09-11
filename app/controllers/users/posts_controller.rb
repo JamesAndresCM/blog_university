@@ -4,7 +4,7 @@ module Users
   class PostsController < ApplicationController
     before_action :check_university
     before_action :set_post, only: %i[show edit update destroy post_status]
-    before_action :set_major, only: %i[edit new create]
+    before_action :set_major, only: %i[edit new create update]
     load_and_authorize_resource
 
     # GET /posts
