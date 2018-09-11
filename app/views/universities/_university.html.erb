@@ -6,7 +6,7 @@
       <%= image_tag university.image, class: 'card-img-top card-padding img-thumbnail', alt: 'Card image cap' %>
       <div class="card-body">
           <p><%= university.descripcion[0..30].capitalize%>...</p>
-        <% unless university.majors.joins(:posts).empty? %>
+        <% unless check_posts_empty(university).empty? %>
         <%= link_to "Ver Publicaciones", show_posts_university_path(university.id), class: 'btn-sm btn-secondary',style: 'text-decoration-line: none;' %>
         <br><br>
         <% end %>
