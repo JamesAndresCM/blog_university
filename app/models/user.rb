@@ -17,7 +17,7 @@ class User < ApplicationRecord
   #un usuario puede tener un solo rol
   has_one :role, dependent: :destroy
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
 
   belongs_to :university, optional: true
   #add_reference :users, :universities, foreign_key: true, on_delete: :cascade
