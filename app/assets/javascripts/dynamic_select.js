@@ -26,7 +26,7 @@ $(document).on('turbolinks:load', function() {
         }
 
         function clearTarget() {
-            return this.$("#post_course_id").html('<option>Seleccione Asignatura</option>');
+            return this.$("#post_course_id").html('<option value="">Seleccione Asignatura</option>');
         }
     })
 
