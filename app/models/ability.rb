@@ -40,10 +40,10 @@ class Ability
         can :show, Post
         can :show_posts, University
         can :search_data, University
-    elsif user.role.superadmin_role
+    elsif user.role.superadmin_role?
         can :manage, :all
         can :access, :rails_admin       # only allow admin users to access Rails Admin
-        can :dashboard                  # allow access to dashboard
+        #can :dashboard                  # allow access to dashboard
       #usuario supervisor, puede ejecutar tareas administrativas en los controlladores
     elsif user.role.supervisor_role?
         can :read , University
