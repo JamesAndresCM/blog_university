@@ -9,15 +9,21 @@ User.destroy_all
 
 University.create!([{
                      name: 'Universidad Catolica',
-                     descripcion: 'Descipcion universidad Catolica'
+                     descripcion: 'Descipcion universidad Catolica',
+                     direccion: 'direccion1',
+                     phone_number: 874653876
                    },
                     {
                       name: 'Universidad de Chile',
-                      descripcion: 'Descipcion universidad de Chile'
+                      descripcion: 'Descipcion universidad de Chile',
+                      direccion: 'direccion2',
+                      phone_number: 874653871
                     },
                     {
                       name: 'Universidad Autonoma',
-                      descripcion: 'Descipcion universidad Autonoma'
+                      descripcion: 'Descipcion universidad Autonoma',
+                      direccion: 'direccion3',
+                      phone_number: 774653876
                     }])
 
 User.create!([{
