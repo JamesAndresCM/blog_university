@@ -11,6 +11,10 @@ class CoursesController < ApplicationController
 
   def new
     @course = Course.new
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.js
+    end
   end
 
   def destroy
